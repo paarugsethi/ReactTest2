@@ -1,13 +1,15 @@
 import { Route, Switch } from "react-router-dom";
+import Checkout from "../Components/Checkout";
+import Homepage from "../Components/HomePage";
 
 function Routes () {
     return (
         <Switch>
             <Route exact path="/">
-                <h1>Home</h1>
+                <Homepage/>
             </Route>
             <Route exact path="/checkout">
-                <h1>Checkout</h1>
+                <Checkout/>
             </Route>
         </Switch>
     )

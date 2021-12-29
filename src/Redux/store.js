@@ -1,4 +1,15 @@
 import reducer from "./reducer";
-import {createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
+import thunk from "redux-thunk";
 
-export const store = createStore(reducer);
+const networkRequests = (store) => (next) => (action) => {
+    if (typeof action === "function"){
+        const func = action;
+        return func(store.dispatch, store.getState)
+    }
+    else{
+        next(action)
+    }
+}
+
+export const store = createStore(reducer, applyMiddleware(thunk));
